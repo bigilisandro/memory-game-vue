@@ -31,7 +31,6 @@
   },
   methods: {
     saveUserName() {
-      // Dispatch the action to save the user's name in the store
       this.$store.dispatch('setUserName', this.nameInput);
       this.$emit('click')
     },

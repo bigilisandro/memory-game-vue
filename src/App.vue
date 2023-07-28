@@ -20,32 +20,11 @@
           "
         />
       </div>
-      </div>
-      <div class="flex my-5">
-        <div
-          class="w-full flex justify-center items-center z-0 text-2xl text-gray font-bold "
-        >
-          Hits: {{ hits }}
-        </div>
-        <div
-          class="w-full flex justify-center items-center z-0 text-2xl text-gray font-bold "
-        >
-          Errors: {{ errors }}
-        </div>
     </div>
+    <Results :hits="hits" :errors="errors" />
     <div class="flex justify-center my-4">
       <button
-        class="
-          px-4
-          py-2
-          bg-green-800
-          hover:bg-green-700
-          text-white text-xl
-          rounded-full
-          border-none
-          focus:outline-none
-          bg-cyan-500 shadow-lg shadow-cyan-500/50
-        "
+        class="px-4 py-2 bg-green-800 hover:bg-green-700 text-white text-xl rounded-full border-none"
         @click="handleRestart"
       >
         Restart Game
@@ -63,6 +42,7 @@
 import Card from "./components/Card.vue";
 import Modal from "./components/Modal.vue";
 import InitModal from "./components/InitModal.vue";
+import Results from "./components/Results.vue";
 import axios from 'axios';
 
 export default {
@@ -70,7 +50,8 @@ export default {
   components: {
     Card,
     Modal,
-    InitModal
+    InitModal,
+    Results
   },
   data() {
     return {
@@ -94,7 +75,7 @@ export default {
     axios.get('https://fed-team.modyo.cloud/api/content/spaces/animals/types/game/entries?per_page=20')
       .then(response => {
         this.items = response.data.entries.slice(0, 8);
-        this.createBoard();
+        this.createGame();
         this.loading = true;
       })
       .catch(error => {
@@ -102,7 +83,7 @@ export default {
       });
   },
   methods: {
-    createBoard() {
+    createGame() {
       this.animals = [...this.items, ...this.items].map(
       (animal, index) => ({
         ...animal,
@@ -147,7 +128,7 @@ export default {
       if(this.animals.every(animal => animal.matched))
       setTimeout(() => {
         this.done = true;
-      }, 300);
+      }, 400);
     },
     closeModal() {
       this.init = false;
@@ -159,7 +140,7 @@ export default {
       this.errors = 0;
       this.done = false;
       this.animals = [];
-      this.createBoard();
+      this.createGame();
     }
   },
 };
