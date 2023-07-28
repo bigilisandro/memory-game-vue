@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card h-26 w-24 md:w-40 md:h-44 xs:justify-center xs:m-2 sm:h-26"
+    class="card h-22 w-20 md:w-40 md:h-44 xs:justify-center xs:m-2 sm:h-26"
     :class="{'flipped' : active}"
     @click="clickHandler"
   >

@@ -5,7 +5,7 @@
         <p class="text-xl pb-4">Congratulations {{ userName + '!' }}</p>
         <p class="text-xl pb-4">You made {{ hits }} Hits and {{ errors }} Errors</p>
         <button
-          class="px-4 py-2 bg-green-400 hover:bg-green-700 text-white text-xl rounded-full border-none focus:outline-none"
+          class="px-4 py-2 bg-green-800 hover:bg-green-700 text-white text-xl rounded-full border-none focus:outline-none"
           @click="$emit('click')"
         >
           Play Again

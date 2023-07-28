@@ -2,7 +2,7 @@
   <div class="app">
     <img
       src="https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-      alt="background image"
+      alt="background"
       class="absolute h-screen w-screen object-cover z-negative"
     />
     <div v-if="loading">
@@ -38,7 +38,7 @@
         class="
           px-4
           py-2
-          bg-green-400
+          bg-green-800
           hover:bg-green-700
           text-white text-xl
           rounded-full
@@ -103,7 +103,6 @@ export default {
   },
   methods: {
     createBoard() {
-      this.shuffleCards();
       this.animals = [...this.items, ...this.items].map(
       (animal, index) => ({
         ...animal,
@@ -111,6 +110,7 @@ export default {
         id: index,
       })
       );
+      this.shuffleCards();
     },
     handleCardClick(card) {
       this.first ? (this.second = card) : (this.first = card);
@@ -136,15 +136,18 @@ export default {
       }, 500);
     },
     shuffleCards() {
-      let array = this.items
+      let array = this.animals
       for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
       }
-      this.items = array
+      this.animals = array
     },
     checkIfCompleted(){
-      if(this.animals.every(animal => animal.matched)) this.done = true;
+      if(this.animals.every(animal => animal.matched))
+      setTimeout(() => {
+        this.done = true;
+      }, 300);
     },
     closeModal() {
       this.init = false;
@@ -155,6 +158,7 @@ export default {
       this.hits = 0;
       this.errors = 0;
       this.done = false;
+      this.animals = [];
       this.createBoard();
     }
   },
