@@ -1,11 +1,6 @@
 <template>
   <div class="app">
-    <img
-      src="https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-      alt="background"
-      class="absolute h-screen w-screen object-cover z-negative"
-    />
-    <div v-if="loading">
+    <div v-if="loading" class="bg-teal-500">
       <div class="lg:flex lg:justify-center lg:flex-col lg:items-center">
         <h1 class="pt-4 text-4xl text-center">Memory Card Game with Animals !</h1>
         <p v-if="userName" class="text-xl text-center">Welcome, {{ userName }}</p>
@@ -22,7 +17,7 @@
       </div>
     </div>
     <Results :hits="hits" :errors="errors" />
-    <div class="flex justify-center my-4">
+    <div class="flex justify-center py-4">
       <button
         class="px-4 py-2 bg-green-800 hover:bg-green-700 text-white text-xl rounded-full border-none"
         @click="handleRestart"

@@ -13,3 +13,7 @@
 .card {
   @apply mb-2 ml-2 flex justify-center items-center relative cursor-pointer;
 }
+
+.bg-teal-500 {
+  background-image: url('https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+}
