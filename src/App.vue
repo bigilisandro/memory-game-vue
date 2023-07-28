@@ -56,7 +56,7 @@ export default {
       second: null,
       hits: 0,
       errors: 0,
-      done: true,
+      done: false,
       init: false,
       loading: false,
     };
