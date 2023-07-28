@@ -1,5 +1,6 @@
-module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/memory-game-vue/'
-    : '/'
-}
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  publicPath: './',
+  outputDir:'dist',
+  assetsDir:'static'
+})
